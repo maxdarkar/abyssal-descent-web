@@ -1,0 +1,310 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '../layouts/Default.astro';
+import heroImg from '../assets/img/hero-banner.png';
+import bossIaImg from '../assets/img/boss-ia.jpg';
+import esbirrosImg from '../assets/img/esbirros.jpg';
+import combateImg from '../assets/img/combate-2.png';
+import godotImg from '../assets/img/godot-mapa.png';
+---
+
+<Layout titulo="Inicio">
+  <!-- 1. Sección de Presentación -->
+  <section class="hero contenedor">
+    <div class="hero-texto">
+      <h1>Abyssal Descent</h1>
+      <p class="hero-frase">
+        Un dungeon crawler 2.5D con generación procedural de habitaciones: nacido de bocetos a lápiz hechos a mano, refinado con IA y construido sobre herramientas libres en Godot.
+      </p>
+      <a href="/avances" class="btn-principal">Explorar Bitácora Completa</a>
+    </div>
+    <div class="hero-imagen">
+      <Image
+        src={heroImg}
+        alt="Guerrero enfrentando a una entidad abisal en las ruinas de Abyssal Descent"
+        widths={[400, 800, 1200]}
+        sizes="(max-width: 768px) 100vw, 50vw"
+        loading="eager"
+      />
+    </div>
+  </section>
+
+  <!-- 2. Sección de Proyectos / Hitos del Juego (Tarjetas Clicables en CSS Grid) -->
+  <section class="contenedor">
+    <h2 class="titulo-seccion">Del Papel al Motor: Avances del Proyecto</h2>
+    <p class="ayuda-clic">Haz clic en cualquier tarjeta para ver el desglose técnico y bocetos originales.</p>
+    <div class="grid-proyectos">
+      <a href="/avances#boss" class="tarjeta-proyecto">
+        <div class="tarjeta-img-box">
+          <Image
+            src={bossIaImg}
+            alt="Primer jefe del juego: entidad búho con tentáculos iluminada"
+            widths={[400, 800]}
+            sizes="(max-width: 768px) 100vw, 25vw"
+          />
+        </div>
+        <div class="tarjeta-contenido">
+          <span class="etiqueta hibrido">Boceto + IA</span>
+          <h3>1. Primer Boss: El Guardián Abisal</h3>
+          <p>
+            Partió como un dibujo a lápiz creado junto a un amigo y luego fue procesado con IA para darle iluminación, textura y volumen antes de integrarlo como sprite.
+          </p>
+          <span class="ver-mas">Ver boceto y proceso →</span>
+        </div>
+      </a>
+
+      <a href="/avances#esbirros" class="tarjeta-proyecto">
+        <div class="tarjeta-img-box">
+          <Image
+            src={esbirrosImg}
+            alt="Cuatro tipos de esbirros del primer piso: volador, terrestre, distancia y tanque"
+            widths={[400, 800]}
+            sizes="(max-width: 768px) 100vw, 25vw"
+          />
+        </div>
+        <div class="tarjeta-contenido">
+          <span class="etiqueta ia">Diseño de Enemigos</span>
+          <h3>2. Esbirros de los Primeros Pisos</h3>
+          <p>
+            Derivados de la estética del jefe principal para mantener coherencia visual: Vigía del Vacío (volador), Retorcido (terrestre y distancia) y Guardián de Plumas (tanque).
+          </p>
+          <span class="ver-mas">Ver roles de enemigos →</span>
+        </div>
+      </a>
+
+      <a href="/avances#combate" class="tarjeta-proyecto">
+        <div class="tarjeta-img-box">
+          <Image
+            src={combateImg}
+            alt="Propuesta de interfaz y combate táctico sobre grilla"
+            widths={[400, 800]}
+            sizes="(max-width: 768px) 100vw, 25vw"
+          />
+        </div>
+        <div class="tarjeta-contenido">
+          <span class="etiqueta trad">Diseño Jugable</span>
+          <h3>3. Prototipos de Combate</h3>
+          <p>
+            Evaluación de mecánicas de enfrentamiento y HUD para equilibrar la lectura visual de los ataques, el posicionamiento y la respuesta de los enemigos.
+          </p>
+          <span class="ver-mas">Comparar los 2 combates →</span>
+        </div>
+      </a>
+
+      <a href="/avances#godot" class="tarjeta-proyecto">
+        <div class="tarjeta-img-box">
+          <Image
+            src={godotImg}
+            alt="Generación aleatoria de habitaciones y primer boss dentro de Godot 4.7"
+            widths={[400, 800]}
+            sizes="(max-width: 768px) 100vw, 25vw"
+          />
+        </div>
+        <div class="tarjeta-contenido">
+          <span class="etiqueta godot">Godot 4.7 · 2.5D</span>
+          <h3>4. Mazmorras Procedurales (Primera Migración)</h3>
+          <p>
+            Implementación en Godot mediante <code>dungeon_generator.gd</code>: habitaciones generadas aleatoriamente en 3D falso con sprites 2D y el primer boss ya integrado en sala.
+          </p>
+          <span class="ver-mas">Ver arquitectura Godot →</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- 3. Sección Adicional: Herramientas y Filosofía Indie -->
+  <section class="seccion-adicional">
+    <div class="contenedor">
+      <h2 class="titulo-seccion">¿Por qué volver a lo Tradicional y Open-Source?</h2>
+      <p class="subtitulo-adicional">
+        Aunque inicialmente buscamos acelerar todo con múltiples IAs, los muros de pago nos llevaron a construir un flujo independiente, sostenible y 100% bajo nuestro control.
+      </p>
+      <div class="grid-pilares">
+        <div class="pilar">
+          <h3>Godot Engine 4.7</h3>
+          <p>
+            Motor libre y ligero donde programamos en GDScript la generación procedural de salas, puertas dinámicas y la integración de sprites 2D dentro de un espacio 3D.
+          </p>
+        </div>
+        <div class="pilar">
+          <h3>LibreSprite &amp; Dibujo a Mano</h3>
+          <p>
+            Combinamos nuestros propios bocetos en cuaderno con edición de sprites 2D píxel a píxel en LibreSprite, evitando depender de suscripciones costosas de IA.
+          </p>
+        </div>
+        <div class="pilar">
+          <h3>Blender 5.3</h3>
+          <p>
+            Herramienta gratuita de modelado 3D utilizada como apoyo para estructuras base, iluminación y referencia espacial de los escenarios del calabozo.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    padding-top: 2rem;
+  }
+
+  .hero-texto {
+    flex: 1;
+  }
+
+  .hero-texto h1 {
+    font-size: 2.8rem;
+    background: linear-gradient(90deg, var(--acento-tradicional), var(--acento-ia));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero-frase {
+    font-size: 1.15rem;
+    color: var(--texto-secundario);
+    margin-bottom: 1.5rem;
+  }
+
+  .btn-principal {
+    display: inline-block;
+    background-color: var(--acento-tradicional);
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .hero-imagen {
+    flex: 1;
+  }
+
+  .hero-imagen :global(img) {
+    border-radius: 12px;
+    border: 1px solid var(--borde);
+  }
+
+  .ayuda-clic {
+    text-align: center;
+    color: var(--texto-secundario);
+    margin: -1.25rem auto 2rem auto;
+    font-size: 0.95rem;
+  }
+
+  .grid-proyectos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.75rem;
+  }
+
+  .tarjeta-proyecto {
+    background-color: var(--bg-secundario);
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  .tarjeta-proyecto:hover {
+    transform: translateY(-4px);
+    border-color: var(--acento-ia);
+  }
+
+  .tarjeta-img-box {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    background-color: #090c10;
+  }
+
+  .tarjeta-img-box :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .tarjeta-contenido {
+    padding: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .etiqueta {
+    display: inline-block;
+    align-self: flex-start;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    margin-bottom: 0.75rem;
+  }
+
+  .etiqueta.ia { background-color: rgba(163, 113, 247, 0.2); color: var(--acento-ia); }
+  .etiqueta.trad { background-color: rgba(47, 129, 247, 0.2); color: var(--acento-tradicional); }
+  .etiqueta.hibrido { background-color: rgba(63, 185, 80, 0.2); color: #3fb950; }
+  .etiqueta.godot { background-color: rgba(71, 140, 191, 0.25); color: #58a6ff; }
+
+  .tarjeta-contenido p {
+    color: var(--texto-secundario);
+    font-size: 0.92rem;
+    margin-bottom: 1rem;
+  }
+
+  .ver-mas {
+    margin-top: auto;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--acento-tradicional);
+  }
+
+  .seccion-adicional {
+    background-color: var(--bg-secundario);
+    border-top: 1px solid var(--borde);
+    border-bottom: 1px solid var(--borde);
+  }
+
+  .subtitulo-adicional {
+    text-align: center;
+    color: var(--texto-secundario);
+    max-width: 750px;
+    margin: -1rem auto 2.5rem auto;
+  }
+
+  .grid-pilares {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.75rem;
+  }
+
+  .pilar {
+    background-color: var(--bg-principal);
+    padding: 1.75rem;
+    border-radius: 8px;
+    border: 1px solid var(--borde);
+  }
+
+  .pilar p {
+    color: var(--texto-secundario);
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      flex-direction: column;
+    }
+
+    .hero-texto h1 {
+      font-size: 2.2rem;
+    }
+  }
+</style>

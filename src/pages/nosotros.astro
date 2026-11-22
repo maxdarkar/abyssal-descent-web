@@ -1,0 +1,210 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '../layouts/Default.astro';
+import equipoImg from '../assets/img/equipo.png';
+import boceto1Img from '../assets/img/boceto-boss.jpeg';
+import boceto2Img from '../assets/img/boceto-enemigo.jpeg';
+import primerBossImg from '../assets/img/primer-boss.jpg';
+---
+
+<Layout titulo="Quiénes Somos">
+  <section class="contenedor nosotros-seccion">
+    <h1 class="titulo-seccion">Quiénes Somos</h1>
+
+    <!-- 1. Historia del Proyecto y Setup -->
+    <div class="nosotros-grid">
+      <div class="nosotros-imagen">
+        <Image
+          src={equipoImg}
+          alt="Desarrollador diseñando niveles de Abyssal Descent junto a su gato"
+          widths={[400, 800]}
+          sizes="(max-width: 768px) 100vw, 50vw"
+          loading="eager"
+        />
+      </div>
+
+      <div class="nosotros-texto">
+        <h2>De los Bocetos en Cuaderno al Código</h2>
+        <p>
+          <strong>Abyssal Descent</strong> nació como una colaboración creativa entre dos amigos apasionados por los videojuegos de fantasía oscura y los dungeon crawlers. Hace tiempo comenzamos dibujando a lápiz nuestras propias criaturas y jefes en hojas de cuaderno, imaginando sus mecánicas y cómo sería enfrentarlos en un calabozo.
+        </p>
+        <p>
+          Al llevar esas ideas al desarrollo real, intentamos primero apoyarnos en múltiples herramientas de Inteligencia Artificial, pero pronto chocamos con una barrera: casi todas cobraban por cada generación o exportación. Decidimos entonces retomar el camino artesanal: aprovechar nuestros propios diseños 2D hechos a mano, combinarlos con software libre (Godot 4.7, LibreSprite y Blender) y programar nuestras propias mecánicas desde cero.
+        </p>
+      </div>
+    </div>
+
+    <!-- 2. División de Roles y Enfoque de Trabajo -->
+    <div class="roles-seccion">
+      <h2 class="titulo-seccion">Cómo Trabajamos el Proyecto</h2>
+      <div class="grid-roles">
+        <div class="card-rol">
+          <span class="rol-badge">Arte y Conceptualización</span>
+          <h3>Bocetos a Mano e Identidad Visual</h3>
+          <p>
+            El diseño base de los jefes y enemigos nace en papel y lápiz junto a mi amigo, definiendo proporciones, rasgos abisales y personalidad antes de digitalizarlos o editarlos como sprites 2D en LibreSprite.
+          </p>
+        </div>
+
+        <div class="card-rol">
+          <span class="rol-badge">Ingeniería y Motor</span>
+          <h3>Arquitectura 2.5D y Generación Procedural</h3>
+          <p>
+            Desarrollo de la estructura técnica en Godot Engine 4.7: construcción de salas 3D modulares, generación aleatoria de calabozos en GDScript y montaje de sprites 2D con profundidad espacial.
+          </p>
+        </div>
+
+        <div class="card-rol">
+          <span class="rol-badge">Próximos Hitos</span>
+          <h3>Hoja de Ruta de Desarrollo</h3>
+          <p>
+            Tras completar la primera migración con el mapa aleatorio y el primer boss en sala, los siguientes pasos son pulir el movimiento del guerrero, implementar los 4 tipos de esbirros y definir el sistema de combate final.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Evolución del Arte: Lápiz vs Resultado Final (Alineado) -->
+    <div class="evolucion-arte">
+      <h2 class="titulo-seccion">Del Lápiz al Sprite del Juego</h2>
+      <div class="grid-bocetos">
+        <figure class="tarjeta-boceto">
+          <div class="boceto-img-box">
+            <Image src={boceto1Img} alt="Dibujo original a lápiz del primer jefe búho con tentáculos" widths={[400, 700]} />
+          </div>
+          <figcaption>Boceto original a lápiz del Primer Boss creado a mano.</figcaption>
+        </figure>
+
+        <figure class="tarjeta-boceto">
+          <div class="boceto-img-box">
+            <Image src={primerBossImg} alt="Sprite final del primer jefe integrado en Godot" widths={[400, 700]} />
+          </div>
+          <figcaption>Versión final procesada e integrada en la sala de Godot.</figcaption>
+        </figure>
+
+        <figure class="tarjeta-boceto">
+          <div class="boceto-img-box">
+            <Image src={boceto2Img} alt="Segundo boceto a lápiz de criatura horror" widths={[400, 700]} />
+          </div>
+          <figcaption>Segundo concepto dibujado a lápiz reservado para futuros pisos.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .nosotros-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: center;
+    margin-bottom: 4rem;
+  }
+
+  .nosotros-imagen :global(img) {
+    border-radius: 12px;
+    border: 1px solid var(--borde);
+  }
+
+  .nosotros-texto h2 {
+    color: var(--acento-tradicional);
+    font-size: 1.75rem;
+  }
+
+  .nosotros-texto p {
+    color: var(--texto-secundario);
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+  }
+
+  /* Roles */
+  .roles-seccion {
+    margin-bottom: 4rem;
+  }
+
+  .grid-roles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.75rem;
+  }
+
+  .card-rol {
+    background-color: var(--bg-secundario);
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 1.75rem;
+  }
+
+  .rol-badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    margin-bottom: 0.75rem;
+    background-color: rgba(47, 129, 247, 0.2);
+    color: var(--acento-tradicional);
+  }
+
+  .card-rol h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .card-rol p {
+    color: var(--texto-secundario);
+    font-size: 0.95rem;
+  }
+
+  /* Galería de Bocetos */
+  .grid-bocetos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.75rem;
+  }
+
+  .tarjeta-boceto {
+    background-color: var(--bg-secundario);
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .boceto-img-box {
+    width: 100%;
+    height: 320px;
+    background-color: #090c10;
+    padding: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .boceto-img-box :global(img) {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 6px;
+  }
+
+  .tarjeta-boceto figcaption {
+    padding: 1rem;
+    font-size: 0.9rem;
+    color: var(--texto-secundario);
+    text-align: center;
+    border-top: 1px solid var(--borde);
+    margin-top: auto;
+  }
+
+  @media (max-width: 768px) {
+    .nosotros-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

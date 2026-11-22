@@ -1,0 +1,282 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '../layouts/Default.astro';
+import guerreroImg from '../assets/img/guerrero.png';
+import combate1Img from '../assets/img/combate-1.png';
+---
+
+<Layout titulo="Jugabilidad y Desarrollo">
+  <section class="contenedor">
+    <h1 class="titulo-seccion">Arquitectura 2.5D y Diseño de Personajes</h1>
+    <p class="intro-pagina">
+      Detalles técnicos de nuestra primera migración en Godot, el funcionamiento del entorno 3D falso con sprites 2D y la transición hacia un flujo indie sostenible.
+    </p>
+
+    <!-- 1. Muestra del Protagonista y Exploración en Salas -->
+    <div class="grid-destacados">
+      <article class="card-detalle">
+        <div class="card-img-box">
+          <Image src={guerreroImg} alt="Diseño del guerrero protagonista con espada y escudo rúnico" widths={[400, 700]} />
+        </div>
+        <div class="card-body">
+          <span class="badge-tech">Sprite 2D Principal</span>
+          <h3>El Protagonista</h3>
+          <p>
+            Armadura pesada con runas abisales y escudo de energía. Diseñado en 2D para desplazarse con profundidad dentro de habitaciones tridimensionales generadas aleatoriamente, conservando el estilo ilustrado a mano.
+          </p>
+        </div>
+      </article>
+
+      <article class="card-detalle">
+        <div class="card-img-box">
+          <Image src={combate1Img} alt="Exploración isométrica y enfrentamiento contra esbirros en sala" widths={[400, 700]} />
+        </div>
+        <div class="card-body">
+          <span class="badge-tech">Entorno 3D Falso (2.5D)</span>
+          <h3>Exploración y Encuentros en Sala</h3>
+          <p>
+            Aunque el sistema de combate definitivo sigue en etapa de pruebas, el enfoque 2.5D permite combinar cámaras en perspectiva, iluminación dinámica y sprites 2D ligeros frente a los distintos tipos de esbirros.
+          </p>
+        </div>
+      </article>
+    </div>
+
+    <!-- 2. Desglose Técnico de la Primera Migración en Godot -->
+    <div class="seccion-arquitectura">
+      <h2>¿Cómo funciona por dentro nuestra primera migración?</h2>
+      <div class="grid-modulos">
+        <div class="modulo-card">
+          <h3>🧱 Escena Base (<code>room.tscn</code>)</h3>
+          <p>
+            Cada habitación está construida con geometría espacial 3D (suelo y muros Norte, Sur, Este y Oeste) junto con nodos de puertas dinámicas que se habilitan solo cuando existe una sala vecina conectada.
+          </p>
+        </div>
+        <div class="modulo-card">
+          <h3>🎲 Generador Procedural (<code>dungeon_generator.gd</code>)</h3>
+          <p>
+            Script en GDScript encargado de construir el mapa de forma aleatoria en cada ejecución, garantizando que el jugador nunca enfrente exactamente el mismo recorrido ni la misma distribución de salas.
+          </p>
+        </div>
+        <div class="modulo-card">
+          <h3>👾 Integración Sprite 2D + 3D</h3>
+          <p>
+            Permite incorporar directamente nuestros dibujos en LibreSprite y el sprite del primer boss dentro del espacio 3D sin necesidad de modelar ni riggear personajes complejos desde cero.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Tabla comparativa de flujo de desarrollo -->
+    <h2 class="subtitulo-tabla">Comparativa de Flujo de Trabajo</h2>
+    <div class="tabla-responsive">
+      <table class="tabla-comparativa">
+        <thead>
+          <tr>
+            <th>Área del Juego</th>
+            <th>Intento Inicial (Dependiente de IA)</th>
+            <th>Solución Actual (Artesanal + Open-Source)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Diseño de Personajes</strong></td>
+            <td>Muros de pago por cada intento y falta de consistencia entre vistas.</td>
+            <td>Bocetos originales a lápiz creados con un amigo y editados en LibreSprite.</td>
+          </tr>
+          <tr>
+            <td><strong>Escenarios y Cámara</strong></td>
+            <td>Modelos 3D pesados y difíciles de optimizar.</td>
+            <td>Entorno 3D falso (2.5D) en Godot con sprites 2D ligeros y ágiles.</td>
+          </tr>
+          <tr>
+            <td><strong>Rejugabilidad</strong></td>
+            <td>Mapas fijos y repetitivos.</td>
+            <td>Generación aleatoria de habitaciones mediante código (<code>dungeon_generator.gd</code>).</td>
+          </tr>
+          <tr>
+            <td><strong>Costo de Herramientas</strong></td>
+            <td>Suscripciones múltiples y créditos limitados.</td>
+            <td>$0 — Basado 100% en software libre (Godot 4.7, LibreSprite y Blender).</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 4. Video Embebido Responsivo -->
+    <div class="seccion-video">
+      <h2>Desarrollo 2.5D y Sprites en Godot</h2>
+      <p>Referencia técnica sobre cómo combinar sprites 2D dentro de entornos tridimensionales y generación procedural de calabozos.</p>
+      <div class="video-contenedor">
+        <iframe
+          src="https://www.youtube.com/embed/LOhfqjmasi0"
+          title="Tutorial y arquitectura de juegos en Godot Engine"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .intro-pagina {
+    text-align: center;
+    color: var(--texto-secundario);
+    max-width: 750px;
+    margin: -1rem auto 2.5rem auto;
+  }
+
+  .grid-destacados {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .card-detalle {
+    background-color: var(--bg-secundario);
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-img-box {
+    width: 100%;
+    height: 290px;
+    overflow: hidden;
+    background-color: #090c10;
+  }
+
+  .card-img-box :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .card-body {
+    padding: 1.5rem;
+  }
+
+  .badge-tech {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    margin-bottom: 0.75rem;
+    background-color: rgba(163, 113, 247, 0.2);
+    color: var(--acento-ia);
+  }
+
+  .card-body p {
+    color: var(--texto-secundario);
+    font-size: 0.95rem;
+  }
+
+  .seccion-arquitectura {
+    background-color: var(--bg-secundario);
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .seccion-arquitectura h2 {
+    text-align: center;
+    margin-bottom: 1.75rem;
+    font-size: 1.6rem;
+  }
+
+  .grid-modulos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .modulo-card {
+    background-color: var(--bg-principal);
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 1.5rem;
+  }
+
+  .modulo-card h3 {
+    font-size: 1.1rem;
+    color: var(--acento-tradicional);
+    margin-bottom: 0.6rem;
+  }
+
+  .modulo-card p {
+    color: var(--texto-secundario);
+    font-size: 0.92rem;
+  }
+
+  .subtitulo-tabla {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.6rem;
+  }
+
+  .tabla-responsive {
+    overflow-x: auto;
+    margin-bottom: 3.5rem;
+  }
+
+  .tabla-comparativa {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--bg-secundario);
+    border: 1px solid var(--borde);
+  }
+
+  .tabla-comparativa th,
+  .tabla-comparativa td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--borde);
+  }
+
+  .tabla-comparativa th {
+    background-color: #1f242c;
+    font-family: var(--fuente-titulos);
+    color: var(--acento-ia);
+  }
+
+  .tabla-comparativa td {
+    color: var(--texto-secundario);
+  }
+
+  .seccion-video {
+    max-width: 850px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .seccion-video p {
+    color: var(--texto-secundario);
+    margin-bottom: 1.5rem;
+  }
+
+  .video-contenedor {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--borde);
+  }
+
+  .video-contenedor iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+</style>

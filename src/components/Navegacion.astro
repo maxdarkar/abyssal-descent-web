@@ -1,0 +1,77 @@
+---
+import { Image } from 'astro:assets';
+import logoImg from '../assets/img/logo.png';
+---
+
+<header class="cabecera">
+  <div class="cabecera-contenedor">
+    <a href="/" class="logo-link" aria-label="Ir al inicio">
+      <Image src={logoImg} alt="Logo oficial de Abyssal Descent" width={42} height={42} loading="eager" />
+      <span>Abyssal Descent</span>
+    </a>
+
+    <nav class="menu-nav" aria-label="Navegación principal">
+      <ul>
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/avances">Bitácora</a></li>
+        <li><a href="/nosotros">Quiénes Somos</a></li>
+        <li><a href="/comparativa">Jugabilidad y Desarrollo</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .cabecera {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: rgba(13, 17, 23, 0.95);
+    border-bottom: 1px solid var(--borde);
+    backdrop-filter: blur(8px);
+  }
+
+  .cabecera-contenedor {
+    width: 90%;
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 0.85rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: var(--texto-principal);
+    font-family: var(--fuente-titulos);
+    font-weight: 700;
+    font-size: 1.25rem;
+  }
+
+  .menu-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 1.75rem;
+  }
+
+  .menu-nav a {
+    text-decoration: none;
+    color: var(--texto-secundario);
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  .menu-nav a:hover {
+    color: var(--acento-ia);
+  }
+
+  @media (max-width: 768px) {
+    .menu-nav {
+      display: none;
+    }
+  }
+</style>

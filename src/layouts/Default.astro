@@ -1,0 +1,29 @@
+---
+import '@fontsource-variable/space-grotesk';
+import '@fontsource-variable/inter';
+import '../styles/estilos.css';
+import Navegacion from '../components/Navegacion.astro';
+import Pie from '../components/Pie.astro';
+
+interface Props {
+  titulo: string;
+}
+
+const { titulo } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{titulo} | Abyssal Descent</title>
+  </head>
+  <body>
+    <Navegacion />
+    <main>
+      <slot />
+    </main>
+    <Pie />
+  </body>
+</html>

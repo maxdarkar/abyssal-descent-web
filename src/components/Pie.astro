@@ -1,0 +1,50 @@
+---
+const year = new Date(Date.now()).getFullYear();
+---
+
+<footer class="pie">
+  <div class="pie-contenedor">
+    <p>&copy; {year} Abyssal Descent — Proyecto Indie. Todos los derechos reservados.</p>
+    <nav class="pie-links" aria-label="Enlaces del pie de página">
+      <a href="/">Inicio</a>
+      <a href="/nosotros">Quiénes Somos</a>
+      <a href="/comparativa">Jugabilidad y Desarrollo</a>
+    </nav>
+  </div>
+</footer>
+
+<style>
+  .pie {
+    background-color: var(--bg-secundario);
+    border-top: 1px solid var(--borde);
+    margin-top: 4rem;
+    padding: 2rem 0;
+    color: var(--texto-secundario);
+    font-size: 0.9rem;
+  }
+
+  .pie-contenedor {
+    width: 90%;
+    max-width: 1150px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .pie-links {
+    display: flex;
+    gap: 1.25rem;
+  }
+
+  .pie-links a {
+    color: var(--texto-secundario);
+    text-decoration: none;
+  }
+
+  .pie-links a:hover {
+    color: var(--texto-principal);
+  }
+</style>

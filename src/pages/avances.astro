@@ -1,0 +1,288 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '../layouts/Default.astro';
+import boceto1Img from '../assets/img/boceto-boss.jpeg';
+import bossIaImg from '../assets/img/boss-ia.jpg';
+import primerBossImg from '../assets/img/primer-boss.jpg';
+import esbirrosImg from '../assets/img/esbirros.jpg';
+import proyecto2Img from '../assets/img/proyecto-2.png';
+import combate1Img from '../assets/img/combate-1.png';
+import combate2Img from '../assets/img/combate-2.png';
+import godotImg from '../assets/img/godot-mapa.png';
+import proyecto1Img from '../assets/img/proyecto-1.png';
+---
+
+<Layout titulo="Bitácora de Desarrollo">
+  <section class="contenedor">
+    <h1 class="titulo-seccion">Bitácora Detallada del Proyecto</h1>
+    <p class="intro-bitacora">
+      Explora a fondo cada etapa de construcción de <strong>Abyssal Descent</strong>: desde los primeros trazos en papel hasta la programación en Godot 4.7.
+    </p>
+
+    <!-- 1. DETALLE PRIMER BOSS -->
+    <article id="boss" class="bloque-detalle">
+      <div class="detalle-imagenes-triple">
+        <Image src={boceto1Img} alt="Boceto original a lápiz del primer jefe" widths={[400, 700]} />
+        <Image src={bossIaImg} alt="Versión iluminada conceptual del primer jefe" widths={[400, 700]} />
+        <Image src={primerBossImg} alt="Sprite final recortado del primer jefe para Godot" widths={[400, 700]} />
+      </div>
+      <div class="detalle-texto">
+        <span class="etiqueta hibrido">Hito 01 · Arte Conceptual y Sprite</span>
+        <h2>Primer Boss: El Guardián Abisal</h2>
+        <p>
+          Este jefe nació de un dibujo a lápiz hecho en cuaderno junto a un amigo. Buscábamos una criatura que combinara la silueta de un búho ancestral con tentáculos abisales y un tercer ojo energético.
+        </p>
+        <p>
+          Luego pasamos el boceto por IA para estudiar iluminación morada y cian, volumen de plumas y contraste, obteniendo finalmente el sprite 2D limpio que ya está integrado dentro de la primera sala de jefe en Godot.
+        </p>
+      </div>
+    </article>
+
+    <!-- 2. DETALLE ESBIRROS -->
+    <article id="esbirros" class="bloque-detalle">
+      <div class="detalle-imagenes-doble">
+        <Image src={esbirrosImg} alt="Los 4 tipos de esbirros del primer piso" widths={[400, 800]} />
+        <Image src={proyecto2Img} alt="Concepto de enfrentamiento contra criaturas abisales" widths={[400, 800]} />
+      </div>
+      <div class="detalle-texto">
+        <span class="etiqueta ia">Hito 02 · Ecosistema de Enemigos</span>
+        <h2>Esbirros de los Primeros Pisos</h2>
+        <p>
+          Para que los pisos iniciales preparen al jugador antes del jefe, definimos cuatro roles de enemigos derivados de la misma familia estética:
+        </p>
+        <ul class="lista-detalle">
+          <li><strong>Vigía del Vacío (Volador):</strong> Acosa desde el aire e ignora obstáculos bajos del suelo.</li>
+          <li><strong>Retorcido (Terrestre):</strong> Enemigo ágil cuerpo a cuerpo que presiona en grupos.</li>
+          <li><strong>Retorcido (A Distancia):</strong> Lanza proyectiles arcanos obligando al jugador a moverse.</li>
+          <li><strong>Guardián de las Plumas (Tanque):</strong> Alta resistencia física; protege a los enemigos a distancia.</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- 3. DETALLE PROTOTIPOS DE COMBATE -->
+    <article id="combate" class="bloque-combate">
+      <span class="etiqueta trad">Hito 03 · Exploración Jugable</span>
+      <h2>Prototipos de Combate: Dos Ideas sobre la Mesa</h2>
+      <p class="combate-intro">
+        Antes de cerrar la programación del combate en Godot, diseñamos dos propuestas visuales distintas para evaluar cómo queremos que se sienta jugar <em>Abyssal Descent</em>:
+      </p>
+
+      <div class="comparacion-combates">
+        <div class="opcion-combate">
+          <div class="opcion-img-wrap">
+            <Image src={combate1Img} alt="Prototipo 1: Combate en tiempo real isométrico" widths={[400, 700]} />
+          </div>
+          <h3>Propuesta A: Acción Isométrica en Tiempo Real</h3>
+          <p>
+            Combate directo con espada y escudo, ataques circulares de área y esquive rápido frente a oleadas simultáneas de esbirros, priorizando reflejos y movilidad constante en sala.
+          </p>
+        </div>
+
+        <div class="opcion-combate">
+          <div class="opcion-img-wrap">
+            <Image src={combate2Img} alt="Prototipo 2: Combate táctico por turnos en grilla" widths={[400, 700]} />
+          </div>
+          <h3>Propuesta B: Estrategia Táctica por Turnos</h3>
+          <p>
+            Desplazamiento por casillas iluminadas, barra superior de iniciativa, menú de acciones (Mover, Atacar, Habilidades, Guardia) y cálculo de probabilidad de impacto (%) sobre cada enemigo.
+          </p>
+        </div>
+      </div>
+
+      <div class="veredicto-combate">
+        <h3>Estado actual: Decisión abierta y enfoque en el entorno 3D falso (2.5D)</h3>
+        <p>
+          <strong>Todavía no hemos elegido definitivamente entre el combate en tiempo real o por turnos.</strong> Por ahora, decidimos priorizar la base estructural del juego: explorar y construir el mapa en un <strong>entorno 3D falso (2.5D) utilizando sprites 2D</strong> y habitaciones generadas aleatoriamente. Una vez que el desplazamiento por las salas y las colisiones estén pulidos en Godot, probaremos ambos estilos directamente sobre el escenario para quedarnos con el más divertido.
+        </p>
+      </div>
+    </article>
+
+    <!-- 4. DETALLE GODOT -->
+    <article id="godot" class="bloque-detalle">
+      <div class="detalle-imagenes-doble">
+        <Image src={godotImg} alt="Generación aleatoria de habitaciones en Godot 4.7" widths={[400, 800]} />
+        <Image src={proyecto1Img} alt="Arte conceptual de santuario y arquitectura del calabozo" widths={[400, 800]} />
+      </div>
+      <div class="detalle-texto">
+        <span class="etiqueta godot">Hito 04 · Primera Migración en Godot 4.7</span>
+        <h2>Mazmorras Procedurales en 3D Falso (2.5D)</h2>
+        <p>
+          En esta primera migración construimos la arquitectura base en <strong>Godot Engine 4.7</strong> utilizando bloques espaciales 3D para las habitaciones (<code>room.tscn</code>) combinados con sprites 2D para los personajes y criaturas.
+        </p>
+        <p>
+          Mediante el script <code>dungeon_generator.gd</code>, el mapa genera habitaciones conectadas de forma aleatoria en cada partida (con puertas Norte, Sur, Este y Oeste), asegurando alta rejugabilidad y teniendo ya incorporado al primer boss dentro de su cámara.
+        </p>
+      </div>
+    </article>
+
+    <div class="volver-contenedor">
+      <a href="/" class="btn-volver">← Volver al Inicio</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .intro-bitacora {
+    text-align: center;
+    color: var(--texto-secundario);
+    max-width: 750px;
+    margin: -1rem auto 3rem auto;
+  }
+
+  .bloque-detalle,
+  .bloque-combate {
+    background-color: var(--bg-secundario);
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+    scroll-margin-top: 90px;
+  }
+
+  .bloque-detalle {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .detalle-imagenes-doble {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .detalle-imagenes-triple {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+  }
+
+  .detalle-imagenes-doble :global(img),
+  .detalle-imagenes-triple :global(img) {
+    border-radius: 8px;
+    border: 1px solid var(--borde);
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+  }
+
+  .detalle-texto p,
+  .combate-intro {
+    color: var(--texto-secundario);
+    margin-bottom: 1rem;
+  }
+
+  .lista-detalle {
+    color: var(--texto-secundario);
+    padding-left: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .comparacion-combates {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.75rem;
+    margin: 1.5rem 0 2rem 0;
+  }
+
+  .opcion-combate {
+    background-color: var(--bg-principal);
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .opcion-img-wrap {
+    width: 100%;
+    height: 230px;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid var(--borde);
+    margin-bottom: 1rem;
+  }
+
+  .opcion-img-wrap :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .opcion-combate h3 {
+    font-size: 1.15rem;
+    color: var(--texto-principal);
+    margin-bottom: 0.5rem;
+  }
+
+  .opcion-combate p {
+    color: var(--texto-secundario);
+    font-size: 0.92rem;
+    margin: 0;
+  }
+
+  .veredicto-combate {
+    background-color: rgba(47, 129, 247, 0.1);
+    border-left: 4px solid var(--acento-tradicional);
+    padding: 1.25rem 1.5rem;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .veredicto-combate h3 {
+    color: var(--acento-tradicional);
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .veredicto-combate p {
+    color: var(--texto-principal);
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  .etiqueta {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    margin-bottom: 0.75rem;
+  }
+
+  .etiqueta.ia { background-color: rgba(163, 113, 247, 0.2); color: var(--acento-ia); }
+  .etiqueta.trad { background-color: rgba(47, 129, 247, 0.2); color: var(--acento-tradicional); }
+  .etiqueta.hibrido { background-color: rgba(63, 185, 80, 0.2); color: #3fb950; }
+  .etiqueta.godot { background-color: rgba(71, 140, 191, 0.25); color: #58a6ff; }
+
+  .volver-contenedor {
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  .btn-volver {
+    display: inline-block;
+    background-color: var(--bg-secundario);
+    border: 1px solid var(--borde);
+    color: var(--texto-principal);
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .btn-volver:hover {
+    border-color: var(--acento-tradicional);
+  }
+
+  @media (max-width: 768px) {
+    .bloque-detalle,
+    .comparacion-combates,
+    .detalle-imagenes-triple {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
